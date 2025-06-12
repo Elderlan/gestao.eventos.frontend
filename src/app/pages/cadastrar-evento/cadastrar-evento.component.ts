@@ -36,7 +36,7 @@ export class CadastrarEventoComponent implements OnInit {
 
   voltar() {
   this.router.navigate(['']);
-}
+  }
 
   onSubmit(): void {
     if (this.formularioEvento.valid) {

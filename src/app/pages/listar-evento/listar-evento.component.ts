@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./listar-evento.component.scss']
 })
 export class ListarEventoComponent implements OnInit {
-   showSpinner: boolean = false;
+  showSpinner: boolean = false;
   displayedColumns: string[] = ['titulo', 'descricao', 'dataHora', 'local', 'acoes'];
 
   eventos: Evento[] = [];
@@ -27,7 +27,7 @@ export class ListarEventoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.obterEventosPaginados(this.pageIndex, this.pageSize, )
+      this.obterEventosPaginados(this.pageIndex, this.pageSize)
   }
 
   obterEventosPaginados(pagina: number, tamanho: number) {
@@ -59,7 +59,7 @@ cadastrarEvento() {
 }
 
 detalharEvento(evento: Evento) {
-console.log("Chamou o detalhar evento: " + evento.id);
+  this.router.navigate(['detalhe', evento.id]);
 }
 editarEvento(evento: Evento) {
 console.log("Chamou o editar evento: " + evento.id);
