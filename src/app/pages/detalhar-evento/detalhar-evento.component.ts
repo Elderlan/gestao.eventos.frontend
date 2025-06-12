@@ -30,7 +30,7 @@ export class DetalharEventoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+   const id = this.route.snapshot.paramMap.get('id');
    this.obterEventoDetalhado(Number(id));
   }
 
@@ -48,13 +48,13 @@ export class DetalharEventoComponent implements OnInit {
       });
     }
 
-      disparaMensagem(mensagem: string): void {
-      this.snackBar.open(mensagem, 'Ok', {
-      duration: 6000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top'
-  });
-}
+  disparaMensagem(mensagem: string): void {
+    this.snackBar.open(mensagem, 'Ok', {
+    duration: 6000,
+    horizontalPosition: 'right',
+    verticalPosition: 'top'
+    });
+  }
 
   voltar() {
   this.router.navigate(['']);

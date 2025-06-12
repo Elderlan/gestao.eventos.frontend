@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetalharEventoComponent } from './pages/detalhar-evento/detalhar-evento.component';
+import { EditarEventoComponent } from './pages/editar-evento/editar-evento.component';
 
 
 
@@ -30,7 +31,8 @@ import { DetalharEventoComponent } from './pages/detalhar-evento/detalhar-evento
     AppComponent,
     ListarEventoComponent,
     CadastrarEventoComponent,
-    DetalharEventoComponent
+    DetalharEventoComponent,
+    EditarEventoComponent
   ],
   imports: [
     BrowserModule,
