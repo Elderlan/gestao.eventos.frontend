@@ -1,0 +1,53 @@
+<mat-card>
+<mat-toolbar color="primary">
+  <span>Lista de Eventos</span>
+</mat-toolbar>
+
+<table mat-table [dataSource]="eventos" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="titulo">
+    <th mat-header-cell *matHeaderCellDef> Título </th>
+    <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> Descricao </th>
+    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dataHora">
+    <th mat-header-cell *matHeaderCellDef> Data/Hora </th>
+    <td mat-cell *matCellDef="let element"> {{element.dataHora}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="local">
+    <th mat-header-cell *matHeaderCellDef> Local </th>
+    <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+  </ng-container>
+
+      <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" matTooltip="Editar" (click)="editarEvento(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="secundary" matTooltip="Detalhar" (click)="detalharEvento(element)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  <mat-paginator
+  [length]="totalElements"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  (page)="onPageChange($event)">
+</mat-paginator>
+
+</mat-card>
+
+
