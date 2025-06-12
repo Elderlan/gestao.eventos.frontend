@@ -1,0 +1,57 @@
+<mat-card>
+<mat-toolbar color="primary">
+  <span>Cadastro de Evento</span>
+  <span class="example-spacer"></span>
+    <button mat-flat-button color="accent" (click)="voltar()">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
+  <div class="spinner-centro" *ngIf="showSpinner">
+   <mat-spinner></mat-spinner>
+  </div>
+<form [formGroup]="formularioEvento" (ngSubmit)="onSubmit()" class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="titulo" maxlength="100" required />
+    <mat-hint align="end">{{ formularioEvento.get('titulo')?.value?.length || 0 }}/100</mat-hint>
+    <mat-error *ngIf="formularioEvento.get('titulo')?.hasError('required')">
+      O título é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput formControlName="descricao" maxlength="1000" rows="4"></textarea>
+    <mat-hint align="end">{{ formularioEvento.get('descricao')?.value?.length || 0 }}/1000</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Data do evento</mat-label>
+    <input matInput [matDatepicker]="seletorData" formControlName="data" required />
+    <mat-datepicker-toggle matSuffix [for]="seletorData"></mat-datepicker-toggle>
+    <mat-datepicker #seletorData></mat-datepicker>
+    <mat-error *ngIf="formularioEvento.get('data')?.hasError('required')">
+      A data é obrigatória.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hora do evento</mat-label>
+    <input matInput type="time" formControlName="hora" required />
+    <mat-error *ngIf="formularioEvento.get('hora')?.hasError('required')">
+      A hora é obrigatória.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Local</mat-label>
+    <input matInput formControlName="local" maxlength="200" />
+    <mat-hint align="end">{{ formularioEvento.get('local')?.value?.length || 0 }}/200</mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="formularioEvento.invalid">
+    Salvar
+  </button>
+</form>
+
+</mat-card>

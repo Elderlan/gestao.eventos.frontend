@@ -62,7 +62,7 @@ detalharEvento(evento: Evento) {
   this.router.navigate(['detalhe', evento.id]);
 }
 editarEvento(evento: Evento) {
-console.log("Chamou o editar evento: " + evento.id);
+    this.router.navigate(['editar', evento.id]);
 }
 
   disparaMensagem(mensagem: string): void {

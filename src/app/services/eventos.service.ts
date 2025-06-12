@@ -14,6 +14,7 @@ export class EventosService {
   private readonly API_EVENTOS = `${environment.apiUrl}/api/evento/listar`;
   private readonly API_CADASTRAR = `${environment.apiUrl}/api/evento/cadastrar`;
   private readonly API_DETALHAR = `${environment.apiUrl}/api/evento/detalhar/`;
+  private readonly API_EDITAR = `${environment.apiUrl}/api/evento/atualizar/`;
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,10 @@ export class EventosService {
 
   detalharEvento(id: number): Observable<Evento> {
     return this.http.get<Evento>(`${this.API_DETALHAR}${id}`);
+  }
+
+  editarEvento(id: number, record: CadastrarEvento): Observable<Evento> {
+    return this.http.put<Evento>(`${this.API_EDITAR}${id}`, record);
   }
 
 }
