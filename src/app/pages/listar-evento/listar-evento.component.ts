@@ -5,6 +5,8 @@ import { PaginacaoEvento } from '../../models/paginacao-evento';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmacaoDialogoComponent } from 'src/app/shared/confirmacao-dialogo/confirmacao-dialogo.component';
 
 @Component({
   selector: 'app-listar-evento',
@@ -23,7 +25,8 @@ export class ListarEventoComponent implements OnInit {
   constructor(
     private eventosService: EventosService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -66,20 +69,30 @@ editarEvento(evento: Evento) {
 }
 
 excluirEvento(evento: Evento) {
+  const dialogRef = this.dialog.open(ConfirmacaoDialogoComponent, {
+    width: '350px',
+    data: { mensagem: `Deseja realmente excluir o evento "${evento.titulo}"?` }
+  });
+
+  dialogRef.afterClosed().subscribe(confirmou => {
+    if (confirmou === true) {
       this.showSpinner = true;
       this.eventosService.excluirEvento(evento.id).subscribe({
-      next: () => {
-      this.eventos = this.eventos.filter(e => e.id !== evento.id);
-      this.totalElements--;       
-        this.disparaMensagem("Evento excluído com sucesso.");
-        this.showSpinner = false;
-      },
-      error: (err) => {
-      this.showSpinner = false;
-      this.disparaMensagem('Erro ao processar a requisição.');        
-  }
-    });
+        next: () => {
+          this.eventos = this.eventos.filter(e => e.id !== evento.id);
+          this.totalElements--;
+          this.disparaMensagem("Evento excluído com sucesso.");
+          this.showSpinner = false;
+        },
+        error: () => {
+          this.showSpinner = false;
+          this.disparaMensagem('Erro ao processar a requisição.');
+        }
+      });
+    }
+  });
 }
+
 
 
 disparaMensagem(mensagem: string): void {
