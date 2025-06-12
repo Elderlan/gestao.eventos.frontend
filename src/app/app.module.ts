@@ -23,6 +23,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetalharEventoComponent } from './pages/detalhar-evento/detalhar-evento.component';
 import { EditarEventoComponent } from './pages/editar-evento/editar-evento.component';
+import { ConfirmacaoDialogoComponent } from './shared/confirmacao-dialogo/confirmacao-dialogo.component';
+import { MatDialogModule}  from '@angular/material/dialog';
 
 
 
@@ -32,7 +34,8 @@ import { EditarEventoComponent } from './pages/editar-evento/editar-evento.compo
     ListarEventoComponent,
     CadastrarEventoComponent,
     DetalharEventoComponent,
-    EditarEventoComponent
+    EditarEventoComponent,
+    ConfirmacaoDialogoComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { EditarEventoComponent } from './pages/editar-evento/editar-evento.compo
     MatNativeDateModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
