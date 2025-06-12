@@ -65,7 +65,24 @@ editarEvento(evento: Evento) {
     this.router.navigate(['editar', evento.id]);
 }
 
-  disparaMensagem(mensagem: string): void {
+excluirEvento(evento: Evento) {
+      this.showSpinner = true;
+      this.eventosService.excluirEvento(evento.id).subscribe({
+      next: () => {
+      this.eventos = this.eventos.filter(e => e.id !== evento.id);
+      this.totalElements--;       
+        this.disparaMensagem("Evento excluído com sucesso.");
+        this.showSpinner = false;
+      },
+      error: (err) => {
+      this.showSpinner = false;
+      this.disparaMensagem('Erro ao processar a requisição.');        
+  }
+    });
+}
+
+
+disparaMensagem(mensagem: string): void {
       this.snackBar.open(mensagem, 'Ok', {
       duration: 6000,
       horizontalPosition: 'right',
