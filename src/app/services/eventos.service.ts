@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { PaginacaoEvento } from '../models/paginacao-evento';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { Evento } from '../models/evento';
+import { CadastrarEvento } from '../models/cadastrar-evento';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import { Observable } from 'rxjs';
 export class EventosService {
 
   private readonly API_EVENTOS = `${environment.apiUrl}/api/evento/listar`;
+  private readonly API_CADASTRAR = `${environment.apiUrl}/api/evento/cadastrar`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +23,11 @@ export class EventosService {
     const options = { params };
     return this.http.get<PaginacaoEvento>(this.API_EVENTOS, options);
   }
+
+    cadastrarEvento(record: CadastrarEvento): Observable<Evento> {
+    return this.http.post<Evento>(this.API_CADASTRAR, record);
+  }
+
 
 
 }

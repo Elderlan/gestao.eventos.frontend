@@ -1,7 +1,15 @@
 <mat-card>
 <mat-toolbar color="primary">
   <span>Lista de Eventos</span>
+  <span class="example-spacer"></span>
+  <button mat-flat-button color="accent" (click)="cadastrarEvento()">
+    Cadastrar Novo Evento
+  </button>
 </mat-toolbar>
+
+  <div class="spinner-centro" *ngIf="showSpinner">
+   <mat-spinner></mat-spinner>
+  </div>
 
 <table mat-table [dataSource]="eventos" class="mat-elevation-z8">
 
@@ -31,7 +39,7 @@
         <button mat-icon-button color="primary" matTooltip="Editar" (click)="editarEvento(element)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="secundary" matTooltip="Detalhar" (click)="detalharEvento(element)">
+        <button mat-icon-button matTooltip="Detalhar" (click)="detalharEvento(element)">
           <mat-icon>visibility</mat-icon>
         </button>
       </td>
