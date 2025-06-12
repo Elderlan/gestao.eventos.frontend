@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DetalharEventoComponent } from './pages/detalhar-evento/detalhar-evento.component';
 
 
 
@@ -28,7 +29,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   declarations: [
     AppComponent,
     ListarEventoComponent,
-    CadastrarEventoComponent
+    CadastrarEventoComponent,
+    DetalharEventoComponent
   ],
   imports: [
     BrowserModule,

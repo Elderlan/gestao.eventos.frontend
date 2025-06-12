@@ -1,0 +1,38 @@
+<mat-card>
+<mat-toolbar color="primary">
+  <span>Detalhes do Evento</span>
+  <span class="example-spacer"></span>
+    <button mat-flat-button color="accent" (click)="voltar()">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
+  <div class="spinner-centro" *ngIf="showSpinner">
+   <mat-spinner></mat-spinner>
+  </div>
+<div class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput [value]="evento.titulo" disabled />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput [value]="evento.descricao" rows="4" disabled></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Data do evento</mat-label>
+    <input matInput [value]="evento.dataHora | date:'dd/MM/yyyy'" disabled />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hora do evento</mat-label>
+    <input matInput [value]="evento.dataHora | date:'HH:mm'" disabled />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Local</mat-label>
+    <input matInput [value]="evento.local" disabled />
+  </mat-form-field>
+</div>
+</mat-card>

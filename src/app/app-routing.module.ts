@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListarEventoComponent } from './pages/listar-evento/listar-evento.component';
 import { CadastrarEventoComponent } from './pages/cadastrar-evento/cadastrar-evento.component';
+import { DetalharEventoComponent } from './pages/detalhar-evento/detalhar-evento.component';
 
 const routes: Routes = [
   { path: '', component: ListarEventoComponent },
-  { path: 'new', component: CadastrarEventoComponent }
+  { path: 'new', component: CadastrarEventoComponent },
+  { path: 'detalhe/:id', component: DetalharEventoComponent }
 ];
 
 @NgModule({
